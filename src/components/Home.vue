@@ -32,7 +32,7 @@ const produce = [
         <v-col cols="12" md="8" class="text-center">
           <div class="text-h3 font-weight-bold mb-6 text-white">Welcome to Smart Farm Season!</div>
           <div class="text-body-1 text-white mb-6" style="line-height: 1.8;">
-            Shamba Online is your one-stop shop for fresh, farm-grown produce delivered
+            Smart Farm Season is your one-stop shop for fresh, farm-grown produce delivered
             right to your door. We work directly with local farmers to bring you the
             best fruits and vegetables Kenya has to offer, at fair prices and at the
             peak of freshness.
