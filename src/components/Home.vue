@@ -1,4 +1,15 @@
 <script setup>
+import { useProductsStore } from '../stores/products'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const productsStore = useProductsStore()
+const products = productsStore.products
+
+function view(product){
+   productsStore.updateSelectedProduct(product) // keep track of the selected item
+    router.push('/product_details')
+}
 const produce = [
   { name: 'Tomatoes', price: 'Ksh 100 per kg', img: '/public/Produce (1).png' },
   { name: 'Onions', price: 'Ksh 200 per kg', img: '/public/Produce (2).png' },
@@ -41,7 +52,7 @@ const produce = [
             Getting your hands on quality produce should never be a hassle. With easy
             online ordering, secure checkout, and fast delivery across Kenya, farm-fresh
             groceries are always just a few clicks away. Whether you're stocking up for
-            the week or cooking something special, Shamba Online makes it simple.
+            the week or cooking something special, Smart Farm Season makes it simple.
           </div>
         </v-col>
       </v-row>
@@ -56,15 +67,15 @@ const produce = [
         </v-col>
       </v-row>
 
-      <v-row>
-        <v-col v-for="item in produce" :key="item.name" cols="12" sm="6" md="3">
+      <v-row justify="center" align="stretch" class="mb-8">
+        <v-col v-for="product in Object.values(products).slice(0, 3)" :key="product.name" cols="12" sm="10" md="4">
           <v-card class="h-100 d-flex flex-column" elevation="3" rounded="lg">
-            <v-img :src="item.img" height="180" cover></v-img>
-            <v-card-title>{{ item.name }}</v-card-title>
-            <v-card-subtitle>{{ item.price }}</v-card-subtitle>
+            <v-img :src="product.image" height="180" cover></v-img>
+            <v-card-title>{{ product.name }}</v-card-title>
+            <v-card-subtitle>{{ product.price }}</v-card-subtitle>
             <v-spacer></v-spacer>
             <v-card-actions class="pa-4 pt-0">
-              <v-btn to="/product_details" color="primary" block variant="flat">
+              <v-btn to="/product_details" color="primary" block variant="flat" @click="view(product)">
                 View
               </v-btn>
             </v-card-actions>
@@ -80,7 +91,7 @@ const produce = [
           <router-link to="/">
             <v-img src="/public/farmlogo.png" width="120" class="mx-auto mx-md-0"></v-img>
           </router-link>
-          <p class="text-white mt-3 mb-0">Copyright &copy; 2026 Shamba Online</p>
+          <p class="text-white mt-3 mb-0">Copyright &copy; 2026 Smart Farm Season</p>
         </v-col>
 
         <v-col cols="12" md="4" class="text-center">
